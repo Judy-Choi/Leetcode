@@ -7,17 +7,18 @@ def lengthOfLongestSubstring(s):
     s = list(s)
     # Make Q and input if the word doesn't exists in the Q
     queue = []
-    
+    # Initialize variables
     max_str_length = 0
 
     # Input charactor to Q
     for char in s:
+        # If we meet the duplicated character
         if char in queue:
-            # if len(queue) > max_str_length:
-            #     max_str_length = len(queue)
+            # Sliding window
             index = queue.index(char)
             queue = queue[index + 1 : ]
         queue.append(char)
+        # Store max length of substring
         max_str_length = max(max_str_length, len(queue))
                 
     return max_str_length
