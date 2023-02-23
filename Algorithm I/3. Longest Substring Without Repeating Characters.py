@@ -3,21 +3,23 @@ def lengthOfLongestSubstring(s):
     :type s: str
     :rtype: int
     """
-
-    sub = []  
-    max_length = 0
-
-    for word in s:
-        if word in sub:
-            if max_length < len(sub):
-                max_length = len(sub)
-            i = sub.index(word)
-            sub = sub[i+1 : ]
-        sub.append(word)
+    # Convert string to List to access charactor 1 by 1
+    s = list(s)
+    # Make Q and input if the word doesn't exists in the Q
+    queue = []
     
-    if max_length > len(sub):
-        return max_length
-    return len(sub)
+    max_str_length = 0
+
+    # Input charactor to Q
+    for char in s:
+        if char in queue:
+            if len(queue) > max_str_length:
+                max_str_length = len(queue)
+            index = queue.index(char)
+            queue = queue[index + 1 : ]
+        queue.append(char)
+                
+    return max(max_str_length, len(queue))
                 
 # s = "abcabcbb"
 # s = "bbbbb"
