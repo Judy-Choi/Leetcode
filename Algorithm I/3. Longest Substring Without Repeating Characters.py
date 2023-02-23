@@ -13,13 +13,14 @@ def lengthOfLongestSubstring(s):
     # Input charactor to Q
     for char in s:
         if char in queue:
-            if len(queue) > max_str_length:
-                max_str_length = len(queue)
+            # if len(queue) > max_str_length:
+            #     max_str_length = len(queue)
             index = queue.index(char)
             queue = queue[index + 1 : ]
         queue.append(char)
+        max_str_length = max(max_str_length, len(queue))
                 
-    return max(max_str_length, len(queue))
+    return max_str_length
                 
 # s = "abcabcbb"
 # s = "bbbbb"
